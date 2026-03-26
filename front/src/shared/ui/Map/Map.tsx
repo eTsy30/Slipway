@@ -3,9 +3,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
-const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
-mapboxgl.accessToken = token;
+import { MAPBOX_TOKEN } from "@/shared/config/mapbox";
 
 interface Point {
   lat: number;
@@ -33,6 +31,13 @@ export const Map = () => {
   // Инициализация карты
   useEffect(() => {
     if (!mapContainer.current) return;
+
+    if (!MAPBOX_TOKEN) {
+      console.error('Mapbox token not configured. Please add NEXT_PUBLIC_MAPBOX_TOKEN to .env.local');
+      return;
+    }
+
+    mapboxgl.accessToken = MAPBOX_TOKEN;
 
     const map = new mapboxgl.Map({
       container: mapContainer.current,

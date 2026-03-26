@@ -1,0 +1,59 @@
+@use '@/shared/styles/mixins' as *;
+
+.container {
+  flex: 1;
+}
+
+.value {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.combo {
+  font-size: var(--text-base);
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  animation: comboPulse 0.5s infinite alternate;
+  
+  &[data-combo='1'] {
+    background: var(--color-text-muted);
+    color: white;
+  }
+  
+  &[data-combo='2'] {
+    background: var(--color-secondary);
+    color: black;
+  }
+  
+  &[data-combo='3'] {
+    background: var(--color-danger);
+    color: white;
+  }
+}
+
+@keyframes comboPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.max {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+.label {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}

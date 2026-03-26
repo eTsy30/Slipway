@@ -1,0 +1,67 @@
+@use '@/shared/styles/mixins' as *;
+
+.hud {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+  right: 16px;
+  @include glass;
+  padding: 20px;
+  z-index: 20;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted);
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-success);
+  border-radius: 50%;
+  @include pulse(1s);
+}
+
+.main {
+  display: flex;
+  gap: 20px;
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+}
+
+.statCoins {
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.statPoints {
+  color: var(--color-primary);
+  font-weight: 700;
+}

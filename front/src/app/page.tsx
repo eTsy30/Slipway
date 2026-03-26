@@ -1,11 +1,10 @@
-import styles from "./page.module.css";
-import MapWrapper from "@/shared/ui/Map/MapWrapper";
+import { RidePage } from "@/pages/ride/{ui}/RidePage";
 
 export default function Home() {
   return (
     
-      <main className={styles.main}>
-        <MapWrapper/>
+      <main >
+       <RidePage/>
       </main>
    
   );
