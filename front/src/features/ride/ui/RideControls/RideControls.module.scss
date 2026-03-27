@@ -1,32 +1,60 @@
-@use '@/shared/styles/mixins' as *;
 
 .container {
-  @include center-x;
+  position: absolute;
   bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  gap: 12px;
+  gap: 16px;
+  padding: 12px 20px;
+  background: rgba(20, 20, 30, 0.7);
+  border-radius: 32px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   z-index: 20;
 }
 
+.buttonBase {
+ color: #00f0ff;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: none;
+    border: 2px solid #00f0ff;
+    border-radius: 999px;
+    padding: 10px 15px;
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px #00f0ff80, 0 0 40px #00f0ff4d;
+}
+
+.buttonBase:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.buttonBase:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .start {
-  @include button-glow(var(--color-primary), rgba(6, 182, 212, 0.4));
-  color: black;
-  padding: 16px 48px;
+  composes: buttonBase;
+  background: linear-gradient(135deg, #4ade80, #16a34a);
 }
 
 .stop {
-  @include button-glow(var(--color-danger), rgba(239, 68, 68, 0.4));
-  color: white;
-  padding: 16px 48px;
+  composes: buttonBase;
+  background: linear-gradient(135deg, #f87171, #b91c1c);
 }
 
 .reset {
-  background: rgba(255, 255, 255, 0.1);
-  color: white;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  padding: 16px 24px;
-  font-size: var(--text-base);
-  font-weight: 600;
-  cursor: pointer;
+  composes: buttonBase;
+  background: linear-gradient(135deg, #facc15, #d97706);
 }

@@ -1,67 +1,70 @@
-@use '@/shared/styles/mixins' as *;
-
+@use '@/shared/styles/variables' as *;
 .hud {
   position: absolute;
-  top: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none; 
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 11px 16px;
+  gap: 4px;
+  max-width: 200px;
+  background: rgba(20, 20, 30, 0.7);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  justify-content: space-around;
+ 
+}
+.speedContainer {
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  position: absolute;
+  top: 16px;
   left: 16px;
-  right: 16px;
-  @include glass;
-  padding: 20px;
-  z-index: 20;
+  pointer-events: auto;
 }
 
-.header {
+.bottomWidgets {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: auto;
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: -0.02em;
-}
-
-.status {
+.mainWidgets {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: var(--text-xs);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--color-text-muted);
-}
-
-.statusDot {
-  width: 8px;
-  height: 8px;
-  background: var(--color-success);
-  border-radius: 50%;
-  @include pulse(1s);
-}
-
-.main {
-  display: flex;
-  gap: 20px;
-}
-
-.stats {
-  display: flex;
-  gap: 16px;
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid var(--color-border);
-  font-size: var(--text-base);
-  color: var(--color-text-secondary);
+  gap: 24px;
+  justify-content: center;
+  background: rgba(0,0,0,0.25); 
+  padding: 12px 24px;
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
 }
 
 .statCoins {
-  color: var(--color-secondary);
-  font-weight: 600;
-}
+    color: $neon-gold;
+    text-shadow: 0 0 8px rgba($neon-gold, 0.4);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, monospace;
+  }
 
-.statPoints {
-  color: var(--color-primary);
-  font-weight: 700;
-}
+  .statPoints {
+    color: $neon-cyan;
+    text-shadow: 0 0 8px rgba($neon-cyan, 0.4);
+    font-size: 16px;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, monospace;
+  }

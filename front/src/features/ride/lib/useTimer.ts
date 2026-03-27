@@ -24,7 +24,7 @@ export const useTimer = (isRunning: boolean) => {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isRunning]);
+  }, [isRunning, elapsed]);
 
   const reset = () => {
     startTimeRef.current = 0;

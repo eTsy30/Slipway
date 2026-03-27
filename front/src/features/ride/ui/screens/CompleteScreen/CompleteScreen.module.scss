@@ -1,0 +1,260 @@
+@use '@/shared/styles/variables' as *;
+
+.container {
+  width: 100%;
+  height: 100dvh;
+  background: $bg-primary;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  
+  // Animated background
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba($neon-cyan, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, rgba($neon-pink, 0.1) 0%, transparent 50%);
+    animation: bgShift 10s ease-in-out infinite;
+  }
+}
+
+@keyframes bgShift {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.title {
+  font-family: $font-display;
+  font-size: 48px;
+  font-weight: 900;
+  color: $text-primary;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 10;
+  
+  text-shadow: 
+    0 0 20px rgba($neon-cyan, 0.5),
+    0 0 40px rgba($neon-cyan, 0.3);
+  
+  // Underline effect
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, $neon-cyan, $neon-pink);
+    border-radius: $radius-full;
+    box-shadow: 0 0 20px rgba($neon-cyan, 0.5);
+  }
+}
+
+.statsCard {
+  background: rgba(10, 10, 10, 0.9);
+  backdrop-filter: blur(20px);
+  border: 1px solid $glass-border;
+  border-radius: $radius-lg;
+  padding: 32px;
+  width: 100%;
+  max-width: 360px;
+  position: relative;
+  z-index: 10;
+  box-shadow: 
+    0 0 0 1px rgba($neon-cyan, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+  
+  // Corner accents
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid $neon-cyan;
+  }
+  
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-right: none;
+    border-bottom: none;
+    border-radius: $radius-lg 0 0 0;
+  }
+  
+  &::after {
+    bottom: -1px;
+    right: -1px;
+    border-left: none;
+    border-top: none;
+    border-radius: 0 0 $radius-lg 0;
+  }
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.label {
+  font-size: 13px;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.value {
+  font-family: $font-mono;
+  font-size: 16px;
+  font-weight: 600;
+  color: $text-primary;
+  
+  &.highlight {
+    color: $neon-gold;
+    text-shadow: 0 0 10px rgba($neon-gold, 0.3);
+  }
+}
+
+.totalSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 2px solid rgba($neon-cyan, 0.3);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 40%;
+    height: 2px;
+    background: $neon-cyan;
+    box-shadow: 0 0 10px $neon-cyan;
+  }
+}
+
+.totalLabel {
+  font-size: 14px;
+  color: $text-secondary;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+
+.totalValue {
+  font-family: $font-mono;
+  font-size: 36px;
+  font-weight: 800;
+  color: $neon-cyan;
+  text-shadow: $glow-cyan;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  z-index: 10;
+}
+
+.shareBtn {
+  background: $neon-cyan;
+  color: $bg-primary;
+  border: none;
+  padding: 18px 48px;
+  border-radius: $radius-full;
+  font-family: $font-display;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: $glow-cyan;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 40px rgba($neon-cyan, 0.6);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.newRideBtn {
+  background: transparent;
+  color: $text-secondary;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 18px 32px;
+  border-radius: $radius-full;
+  font-family: $font-display;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: $neon-cyan;
+    color: $neon-cyan;
+    background: rgba($neon-cyan, 0.05);
+  }
+}
+
+// Victory particles
+.victoryEffect {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  
+  .ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid $neon-cyan;
+    border-radius: 50%;
+    opacity: 0;
+    animation: ringExpand 3s ease-out infinite;
+    
+    &:nth-child(2) {
+      border-color: $neon-pink;
+      animation-delay: 1s;
+    }
+    
+    &:nth-child(3) {
+      border-color: $neon-gold;
+      animation-delay: 2s;
+    }
+  }
+}
+
+@keyframes ringExpand {
+  0% {
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+    opacity: 0;
+  }
+}

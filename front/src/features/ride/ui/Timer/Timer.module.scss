@@ -1,28 +1,29 @@
 .container {
-  flex: 1;
-  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 11px 16px;
+  gap: 4px;
+  max-width: 200px;
+  background: rgba(20, 20, 30, 0.7);
+  border-radius: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
 }
 
 .value {
-  font-size: var(--text-4xl);
+  font-size: 16px;
   font-weight: 700;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-  font-family: var(--font-mono);
-  
-  &[data-running='true'] {
-    color: var(--color-text);
-  }
-  
-  &[data-running='false'] {
-    color: var(--color-text-muted);
-  }
+  font-family: -apple-system, BlinkMacSystemFont, monospace;
+  color: #22c55e;
 }
 
 .label {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
+  font-size: 12px;
+  color: #aaa;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-top: 8px;
+  letter-spacing: 1px;
+  color: #22c55e;
 }

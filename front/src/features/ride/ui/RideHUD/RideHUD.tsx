@@ -12,7 +12,7 @@ interface RideHUDProps {
   distance: number;
   collectedCount: number;
   totalCoins?: number;
-  currentTarget?: number;
+
 }
 
 export const RideHUD = ({
@@ -24,32 +24,23 @@ export const RideHUD = ({
   distance,
   collectedCount,
   totalCoins,
-  currentTarget,
+  
 }: RideHUDProps) => {
   return (
     <div className={styles.hud}>
-      <div className={styles.header}>
-        <div className={styles.logo}>SLIPWAY</div>
-        <div className={styles.status}>
-          <div className={styles.statusDot} />
-          <span>{isRunning ? 'RIDING' : 'PAUSED'}</span>
+      {/* Speedometer — левый верхний угол */}
+      <div className={styles.speedContainer}>
+        <Speedometer currentSpeed={currentSpeed} maxScale={maxSpeed} />
+         <div className={styles.container}>
+        <Distance meters={distance} />
+          <Timer elapsed={elapsed} isRunning={isRunning} />
+          </div>
+         <div className={styles.container}>
+          <span className={styles.statCoins}>
+            {collectedCount}/{totalCoins || 5} 🪙
+          </span>
+          <span className={styles.statPoints}>{Math.floor(distance * combo)} pts</span>
         </div>
       </div>
-      
-      <div className={styles.main}>
-        <Speedometer current={currentSpeed} max={maxSpeed} combo={combo} />
-        <Distance meters={distance} />
-        <Timer elapsed={elapsed} isRunning={isRunning} />
-      </div>
-      
-      <div className={styles.stats}>
-        <span>{(distance / 1000).toFixed(2)} km</span>
-        <span className={styles.statCoins}>
-          {currentTarget ? `🎯 #${currentTarget} ` : ''}
-          {collectedCount}/{totalCoins || 5} 🪙
-        </span>
-        <span className={styles.statPoints}>{Math.floor(distance * combo)} pts</span>
-      </div>
-    </div>
-  );
+    </div>)
 };
